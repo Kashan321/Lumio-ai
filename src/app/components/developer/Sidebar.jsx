@@ -1,4 +1,4 @@
-import { FaUser, FaGraduationCap, FaTools, FaBriefcase, FaFileAlt, FaCheck } from 'react-icons/fa';
+import { FaUser, FaGraduationCap, FaTools, FaBriefcase, FaFileAlt, FaCheck, FaTimesCircle } from 'react-icons/fa';
 
 export default function Sidebar({ activeStep, formStatus }) {
   const navItems = [
@@ -10,7 +10,7 @@ export default function Sidebar({ activeStep, formStatus }) {
   ];
 
   return (
-    <div className="w-64 bg-white p-6">
+    <div className="w-64 p-4 rounded-sm">
       <nav className="space-y-2">
         {navItems.map((item) => (
           <div
@@ -22,7 +22,7 @@ export default function Sidebar({ activeStep, formStatus }) {
             <item.icon className="h-5 w-5" />
             <span className="flex-1">{item.title}</span>
             {formStatus[item.step]?.isCompleted && <FaCheck className="h-4 w-4 text-green-500" />}
-            {formStatus[item.step]?.hasError && <div className="h-4 w-4 rounded-full bg-red-500" />}
+            {formStatus[item.step]?.hasError && <FaTimesCircle className="h-4 w-4 text-red-500" />}
           </div>
         ))}
       </nav>

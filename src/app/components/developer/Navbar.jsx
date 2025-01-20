@@ -1,16 +1,18 @@
 import React from "react"
-// import logo from "/images/logo.png"
+import logo from "./logo.png"
 
 function Navbar({ onLogout }) {
 
   return (
     <nav className="bg-gray-800 px-4 py-2 flex justify-between items-center">
       <div className="flex items-center">
-        {/* <img
+        <img
           src={logo}
           alt="LumioAI Logo"
+          width={120}
+          height={30}
           className="h-8 w-auto"
-        /> */}
+        />
       </div>
       <button className="text-white flex items-center gap-2 hover:text-gray-300" onClick={onLogout}>
         <svg

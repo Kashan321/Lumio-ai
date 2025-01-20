@@ -1,15 +1,24 @@
+import { useState } from "react";
+
 import { FaUpload } from 'react-icons/fa';
 
 function BasicForm({ onNext }) {
-  return (
-    <div className="flex-1 p-6">
-      <div className="mb-8">
-        <h1 className="text-2xl font-semibold mb-4">My Profile</h1>
-        <p className="text-gray-600">
-          The information that you provide helps us gain a clear understanding of your profile, enabling us to connect you with the right opportunities and companies that match your expertise.
-        </p>
-      </div>
+  const [formValues, setFormValues] = useState({
+    firstName: 'John',
+    lastName: 'Rockefeller',
+    country: '',
+    discovery: '',
+    rate: '',
+    phone: ''
+  });
 
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormValues({ ...formValues, [id]: value });
+  };
+
+  return (
+    <div className="flex-1 p-6 bg-slate-200">
       {/* Picture Upload Section */}
       <div className="flex justify-center mb-8">
         <div className="flex flex-col items-center justify-center p-8 border-2 border-dashed rounded-lg">
@@ -26,36 +35,40 @@ function BasicForm({ onNext }) {
       <div className="grid grid-cols-2 gap-8">
         <div className="space-y-6">
           <div className="space-y-2">
-            <label htmlFor="firstName" className="block text-sm font-medium">
+            <label htmlFor="firstName" className="block text-sm font-medium text-black">
               First Name <span className="text-red-500">*</span>
             </label>
             <input
               id="firstName"
               type="text"
-              defaultValue="John"
-              className="w-full px-3 py-2 border rounded-md"
+              value={formValues.firstName}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md text-black"
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="country" className="block text-sm font-medium">
+            <label htmlFor="country" className="block text-sm font-medium text-black">
               Country of residence <span className="text-red-500">*</span>
             </label>
             <input
               id="country"
               type="text"
-              defaultValue="United States"
-              className="w-full px-3 py-2 border rounded-md"
+              value={formValues.country}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md text-black"
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="discovery" className="block text-sm font-medium">
+            <label htmlFor="discovery" className="block text-sm font-medium text-black">
               How did you discover LumioAI?
             </label>
             <select
               id="discovery"
-              className="w-full px-3 py-2 border rounded-md"
+              value={formValues.discovery}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md text-black"
             >
               <option value="">Select</option>
               <option value="search">Search Engine</option>
@@ -66,14 +79,16 @@ function BasicForm({ onNext }) {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="rate" className="block text-sm font-medium">
+            <label htmlFor="rate" className="block text-sm font-medium text-black">
               Set your expected monthly rate
             </label>
             <div className="relative">
               <input
                 id="rate"
                 type="text"
-                className="w-full px-3 py-2 border rounded-md"
+                value={formValues.rate}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-md text-black"
               />
               <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
                 USD
@@ -84,23 +99,24 @@ function BasicForm({ onNext }) {
 
         <div className="space-y-6">
           <div className="space-y-2">
-            <label htmlFor="lastName" className="block text-sm font-medium">
+            <label htmlFor="lastName" className="block text-sm font-medium text-black">
               Last Name <span className="text-red-500">*</span>
             </label>
             <input
               id="lastName"
               type="text"
-              defaultValue="Rockefeller"
-              className="w-full px-3 py-2 border rounded-md"
+              value={formValues.lastName}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md text-black"
             />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="phone" className="block text-sm font-medium">
+            <label htmlFor="phone" className="block text-sm font-medium text-black">
               Phone number <span className="text-red-500">*</span>
             </label>
             <div className="flex gap-2">
-              <select className="w-[100px] px-3 py-2 border rounded-md">
+              <select className="w-[100px] px-3 py-2 border rounded-md text-black">
                 <option value="us">🇺🇸 +1</option>
                 <option value="uk">🇬🇧 +44</option>
                 <option value="eu">🇪🇺 +33</option>
@@ -108,13 +124,15 @@ function BasicForm({ onNext }) {
               <input
                 id="phone"
                 type="tel"
-                className="flex-1 px-3 py-2 border rounded-md"
+                value={formValues.phone}
+                onChange={handleChange}
+                className="flex-1 px-3 py-2 border rounded-md text-black"
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm font-medium">Upload your resume</label>
+            <label className="block text-sm font-medium text-black">Upload your resume</label>
             <div className="flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-lg bg-gray-50">
               <FaUpload className="h-6 w-6 text-gray-400 mb-2" />
               <span className="text-gray-600">Upload your file</span>
@@ -125,7 +143,7 @@ function BasicForm({ onNext }) {
       </div>
 
       <div className="flex justify-between mt-8">
-        <button className="px-4 py-2 border rounded-md hover:bg-gray-50">
+        <button className="px-4 py-2 border rounded-md hover:bg-gray-50" onClick={() => handleBack('')}>
           Back
         </button>
         <button

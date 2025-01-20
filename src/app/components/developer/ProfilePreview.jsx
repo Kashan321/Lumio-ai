@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProfilePreview = () => {
+const ProfilePreview = ({ onEdit }) => {
   const userData = {
     basics: {
       firstName: "John",
@@ -33,9 +33,18 @@ const ProfilePreview = () => {
 
   return (
     <div className="profile-preview">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-semibold">Profile Preview</h2>
+        <button
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          onClick={() => onEdit('basic')}
+        >
+          Edit
+        </button>
+      </div>
       <div className="profile-sections">
         <div className="section">
-          <h2>Basics</h2>
+          <h3>Basics</h3>
           <p>First Name: {userData.basics.firstName}</p>
           <p>Last Name: {userData.basics.lastName}</p>
           <p>Country: {userData.basics.country}</p>
@@ -43,7 +52,7 @@ const ProfilePreview = () => {
           <p>Monthly Rate: {userData.basics.monthlyRate}</p>
         </div>
         <div className="section">
-          <h2>Education</h2>
+          <h3>Education</h3>
           <p>School: {userData.education.school}</p>
           <p>Degree: {userData.education.degree}</p>
           <p>Year: {userData.education.year}</p>
@@ -51,22 +60,26 @@ const ProfilePreview = () => {
           <p>About: {userData.education.about}</p>
         </div>
         <div className="section">
-          <h2>Technical Skills</h2>
+          <h3>Technical Skills</h3>
           <p>Expertise: {userData.skills.expertise}</p>
           <p>Years of Experience: {userData.skills.experience}</p>
           <p>Skills: {userData.skills.skillset.join(", ")}</p>
         </div>
         <div className="section">
-          <h2>Work Experience</h2>
+          <h3>Work Experience</h3>
           <p>Company: {userData.workExperience.company}</p>
           <p>Role: {userData.workExperience.role}</p>
           <p>Year: {userData.workExperience.year}</p>
           <p>Accomplishments: {userData.workExperience.accomplishments}</p>
         </div>
       </div>
-      <div className="buttons">
-        <button className="back-button">Back</button>
-        <button className="save-button">Save Profile</button>
+      <div className="buttons flex justify-between mt-4">
+        <button className="px-4 py-2 bg-gray-200 text-black rounded-md hover:bg-gray-300" onClick={() => onEdit('work-experience')}>
+          Back
+        </button>
+        <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+          Save Profile
+        </button>
       </div>
       <style jsx>{`
         .profile-preview {
@@ -86,34 +99,13 @@ const ProfilePreview = () => {
           border-radius: 8px;
           background-color: #f9f9f9;
         }
-        .section h2 {
+        .section h3 {
           margin-bottom: 10px;
         }
         .buttons {
           display: flex;
           justify-content: space-between;
           margin-top: 20px;
-        }
-        button {
-          padding: 10px 20px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 16px;
-        }
-        .back-button {
-          background-color: #ddd;
-          color: #333;
-        }
-        .back-button:hover {
-          background-color: #ccc;
-        }
-        .save-button {
-          background-color: #007bff;
-          color: #fff;
-        }
-        .save-button:hover {
-          background-color: #0056b3;
         }
       `}</style>
     </div>

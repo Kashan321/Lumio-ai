@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import logo from "../../form.png"
+import logo from "../../logo.png"
 
 export default function Signup() {
   return (
@@ -13,8 +13,8 @@ export default function Signup() {
               <Image
                 src={logo}
                 alt="LumioAI Logo"
-                width={80}
-                height={80}
+                width={60}
+                height={40}
                 className="h-16 w-auto"
               />
             </div>

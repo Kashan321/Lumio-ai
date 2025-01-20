@@ -3,7 +3,7 @@ import React from "react"
 function ManualEntry({ onClick }) {
   return (
     <div className="w-full flex flex-col justify-between h-full">
-      <h3 className="text-lg font-medium mb-2">Continue filling the information manually.</h3>
+      <h3 className="text-lg font-medium mb-2 text-black">Continue filling the information manually.</h3>
       <div
         className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center flex-1 flex flex-col justify-center cursor-pointer hover:border-gray-400"
         onClick={onClick}
