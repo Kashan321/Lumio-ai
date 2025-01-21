@@ -1,4 +1,5 @@
 import React from "react";
+import { FaUser, FaGraduationCap, FaTools, FaBriefcase, FaFileAlt } from 'react-icons/fa';
 
 const ProfilePreview = ({ onEdit }) => {
   const userData = {
@@ -33,44 +34,79 @@ const ProfilePreview = ({ onEdit }) => {
 
   return (
     <div className="profile-preview">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-semibold">Profile Preview</h2>
-        <button
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-          onClick={() => onEdit('basic')}
-        >
-          Edit
-        </button>
-      </div>
       <div className="profile-sections">
         <div className="section">
-          <h3>Basics</h3>
-          <p>First Name: {userData.basics.firstName}</p>
-          <p>Last Name: {userData.basics.lastName}</p>
-          <p>Country: {userData.basics.country}</p>
-          <p>Phone: {userData.basics.phone}</p>
-          <p>Monthly Rate: {userData.basics.monthlyRate}</p>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center gap-2">
+              <FaUser className="h-5 w-5 text-black" />
+              <h3 className="text-xl font-semibold text-black">Basic Information</h3>
+            </div>
+            <button
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              onClick={() => onEdit('basic')}
+            >
+              Edit
+            </button>
+          </div>
+          <p className="text-black">First Name: {userData.basics.firstName}</p>
+          <p className="text-black">Last Name: {userData.basics.lastName}</p>
+          <p className="text-black">Country: {userData.basics.country}</p>
+          <p className="text-black">Phone: {userData.basics.phone}</p>
+          <p className="text-black">Monthly Rate: {userData.basics.monthlyRate}</p>
         </div>
         <div className="section">
-          <h3>Education</h3>
-          <p>School: {userData.education.school}</p>
-          <p>Degree: {userData.education.degree}</p>
-          <p>Year: {userData.education.year}</p>
-          <p>Country: {userData.education.country}</p>
-          <p>About: {userData.education.about}</p>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center gap-2">
+              <FaGraduationCap className="h-5 w-5 text-black" />
+              <h3 className="text-xl font-semibold text-black">Education</h3>
+            </div>
+            <button
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              onClick={() => onEdit('education')}
+            >
+              Edit
+            </button>
+          </div>
+          <p className="text-black">School: {userData.education.school}</p>
+          <p className="text-black">Degree: {userData.education.degree}</p>
+          <p className="text-black">Year: {userData.education.year}</p>
+          <p className="text-black">Country: {userData.education.country}</p>
+          <p className="text-black">About: {userData.education.about}</p>
         </div>
         <div className="section">
-          <h3>Technical Skills</h3>
-          <p>Expertise: {userData.skills.expertise}</p>
-          <p>Years of Experience: {userData.skills.experience}</p>
-          <p>Skills: {userData.skills.skillset.join(", ")}</p>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center gap-2">
+              <FaTools className="h-5 w-5 text-black" />
+              <h3 className="text-xl font-semibold text-black">Technical Skills</h3>
+            </div>
+            <button
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              onClick={() => onEdit('technical-skills')}
+            >
+              Edit
+            </button>
+          </div>
+          <p className="text-black">Expertise: {userData.skills.expertise}</p>
+          <p className="text-black">Years of Experience: {userData.skills.experience}</p>
+          <p className="text-black">Skills: {userData.skills.skillset.join(", ")}</p>
         </div>
         <div className="section">
-          <h3>Work Experience</h3>
-          <p>Company: {userData.workExperience.company}</p>
-          <p>Role: {userData.workExperience.role}</p>
-          <p>Year: {userData.workExperience.year}</p>
-          <p>Accomplishments: {userData.workExperience.accomplishments}</p>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center gap-2">
+              <FaBriefcase className="h-5 w-5 text-black" />
+              <h3 className="text-xl font-semibold text-black">Work Experience</h3>
+            </div>
+            <button
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              onClick={() => onEdit('work-experience')}
+            >
+              Edit
+            </button>
+          </div>
+          <p className="text-black">Company: {userData.workExperience.company}</p>
+          <p className="text-black">Role: {userData.workExperience.role}</p>
+          <p className="text-black">Year: {userData.workExperience.year}</p>
+          <p className="text-black">Accomplishments: {userData.workExperience.accomplishments}</p>
         </div>
       </div>
       <div className="buttons flex justify-between mt-4">

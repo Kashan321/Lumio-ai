@@ -1,13 +1,6 @@
 function EducationForm({ onBack, onNext }) {
   return (
     <div className="flex-1 p-6">
-      <div className="mb-8">
-        <h1 className="text-2xl font-semibold mb-4 text-black">Education</h1>
-        <p className="text-gray-600">
-          The information that you provide helps us gain a clear understanding of your profile, enabling us to connect you with the right opportunities and companies that match your expertise.
-        </p>
-      </div>
-
       <form className="max-w-3xl">
         <div className="space-y-6">
           <div className="grid grid-cols-2 gap-6">

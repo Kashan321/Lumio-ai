@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import logo from "../../logo.png"
 
 export default function Signup() {
   return (
@@ -11,7 +10,7 @@ export default function Signup() {
           <div className="flex justify-center">
             <div className="bg-blue-600 px-8 py-4 rounded-b-lg">
               <Image
-                src={logo}
+                src={"/assets/logo.png"}
                 alt="LumioAI Logo"
                 width={60}
                 height={40}

@@ -10,7 +10,7 @@ export default function Sidebar({ activeStep, formStatus }) {
   ];
 
   return (
-    <div className="w-64 p-4 rounded-sm">
+    <div className="w-64 p-4 rounded-sm mt-8">
       <nav className="space-y-2">
         {navItems.map((item) => (
           <div

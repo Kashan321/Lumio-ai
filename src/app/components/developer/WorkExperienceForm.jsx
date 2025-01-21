@@ -9,21 +9,45 @@ function WorkExperienceForm({ onBack, onNext }) {
     endDate: '',
     endMonth: '',
     description: '',
+    stillWorking: false,
   });
-  const [formError, setFormError] = useState(false);
+  const [formError, setFormError] = useState({
+    company: false,
+    role: false,
+    startDate: false,
+    startMonth: false,
+    endDate: false,
+    endMonth: false,
+    description: false,
+  });
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormValues({ ...formValues, [id]: value });
+    const { id, value, type, checked } = e.target;
+    setFormValues({
+      ...formValues,
+      [id]: type === 'checkbox' ? checked : value,
+    });
   };
 
   const handleNext = () => {
     // Validate required fields
-    if (!formValues.company || !formValues.role || !formValues.startDate || !formValues.startMonth || !formValues.endDate || !formValues.endMonth || !formValues.description) {
-      setFormError(true);
+    const errors = {
+      company: !formValues.company,
+      role: !formValues.role,
+      startDate: !formValues.startDate,
+      startMonth: !formValues.startMonth,
+      endDate: !formValues.endDate && !formValues.stillWorking,
+      endMonth: !formValues.endMonth && !formValues.stillWorking,
+      description: !formValues.description,
+    };
+
+    setFormError(errors);
+
+    const hasErrors = Object.values(errors).some(error => error);
+    if (hasErrors) {
       return;
     }
-    setFormError(false);
+
     onNext();
   };
 
@@ -50,7 +74,7 @@ function WorkExperienceForm({ onBack, onNext }) {
                 value={formValues.company}
                 onChange={handleChange}
                 placeholder="Type here.."
-                className="w-full px-4 py-2 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                className={`w-full px-4 py-2 bg-gray-100 rounded-md focus:outline-none ${formError.company ? 'border-red-500' : 'border-gray-300'} text-black`}
               />
             </div>
             <div>
@@ -63,7 +87,7 @@ function WorkExperienceForm({ onBack, onNext }) {
                 value={formValues.role}
                 onChange={handleChange}
                 placeholder="Type here.."
-                className="w-full px-4 py-2 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                className={`w-full px-4 py-2 bg-gray-100 rounded-md focus:outline-none ${formError.role ? 'border-red-500' : 'border-gray-300'} text-black`}
               />
             </div>
           </div>
@@ -79,7 +103,7 @@ function WorkExperienceForm({ onBack, onNext }) {
                   id="startDate"
                   value={formValues.startDate}
                   onChange={handleChange}
-                  className="px-4 py-2 bg-gray-100 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                  className={`px-4 py-2 bg-gray-100 rounded-md appearance-none focus:outline-none ${formError.startDate ? 'border-red-500' : 'border-gray-300'} text-black`}
                 >
                   <option value="">Select</option>
                   {/* Add more years as needed */}
@@ -89,7 +113,7 @@ function WorkExperienceForm({ onBack, onNext }) {
                   id="startMonth"
                   value={formValues.startMonth}
                   onChange={handleChange}
-                  className="px-4 py-2 bg-gray-100 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                  className={`px-4 py-2 bg-gray-100 rounded-md appearance-none focus:outline-none ${formError.startMonth ? 'border-red-500' : 'border-gray-300'} text-black`}
                 >
                   <option value="">Select</option>
                   {/* Add more months as needed */}
@@ -99,14 +123,15 @@ function WorkExperienceForm({ onBack, onNext }) {
             </div>
             <div>
               <label className="block text-sm font-medium text-black mb-1">
-                End Date <span className="text-red-500">*</span>
+                End Date
               </label>
               <div className="grid grid-cols-2 gap-4">
                 <select
                   id="endDate"
                   value={formValues.endDate}
                   onChange={handleChange}
-                  className="px-4 py-2 bg-gray-100 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                  disabled={formValues.stillWorking}
+                  className={`px-4 py-2 bg-gray-100 rounded-md appearance-none focus:outline-none ${formError.endDate ? 'border-red-500' : 'border-gray-300'} text-black`}
                 >
                   <option value="">Select</option>
                   {/* Add years as needed */}
@@ -115,13 +140,28 @@ function WorkExperienceForm({ onBack, onNext }) {
                   id="endMonth"
                   value={formValues.endMonth}
                   onChange={handleChange}
-                  className="px-4 py-2 bg-gray-100 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                  disabled={formValues.stillWorking}
+                  className={`px-4 py-2 bg-gray-100 rounded-md appearance-none focus:outline-none ${formError.endMonth ? 'border-red-500' : 'border-gray-300'} text-black`}
                 >
                   <option value="">Select</option>
                   {/* Add months as needed */}
                 </select>
               </div>
             </div>
+          </div>
+
+          {/* Still Working Here */}
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="stillWorking"
+              checked={formValues.stillWorking}
+              onChange={handleChange}
+              className="h-4 w-4 text-blue-600 rounded"
+            />
+            <label htmlFor="stillWorking" className="ml-2 text-sm text-black">
+              I am currently working here
+            </label>
           </div>
 
           {/* Description */}
@@ -135,7 +175,7 @@ function WorkExperienceForm({ onBack, onNext }) {
               onChange={handleChange}
               rows={6}
               placeholder="Type here.."
-              className="w-full px-4 py-2 bg-gray-100 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              className={`w-full px-4 py-2 bg-gray-100 rounded-md resize-none focus:outline-none ${formError.description ? 'border-red-500' : 'border-gray-300'} text-black`}
             />
           </div>
 
@@ -151,7 +191,7 @@ function WorkExperienceForm({ onBack, onNext }) {
           </div>
         </div>
 
-        {formError && (
+        {Object.values(formError).some(error => error) && (
           <div className="text-red-500 text-sm mt-4">
             Please fill in all required fields.
           </div>
