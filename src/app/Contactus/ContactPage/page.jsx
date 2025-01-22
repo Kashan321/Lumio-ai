@@ -7,12 +7,12 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <div className="min-h-screen flex flex-col bg-white text-black">
+      <div className="mt-20 min-h-screen flex flex-col bg-white text-black">
         <main className="flex-grow">
           <ContactForm />
 
-          <div className="w-full max-w-xl p-6 mt-8 ml-auto">
-            <div className="bg-blue-600 text-white rounded-lg p-8 space-y-4 text-left">
+          <div className="w-full max-w-xl pb-20 pt-10 mt-8 ml-auto ">
+            <div className="bg-blue-600 text-white rounded-l-full p-8 space-y-4 text-left">
               <div className="flex items-start space-x-3">
                 <MapPin className="w-6 h-6 mt-1 flex-shrink-0" />
                 <p>
