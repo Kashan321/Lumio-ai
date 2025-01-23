@@ -1,13 +1,13 @@
+import DateInput from "@/app/components/ClientDashboard/DateInput";
+import React from "react";
 
-import React from "react"
-
-export default function DashboardPage() {
+export default function Dashboard() {
   return (
     <main className="container mx-auto p-4 bg-white text-black">
       <div className="mb-8 flex items-start gap-6">
         <div className="h-24 w-24 overflow-hidden rounded-full">
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dashboard1-zRACEYBHrSEuyeMsw7MpeYbS1JZkuN.png"
+            src={""}
             alt="Profile"
             className="h-full w-full object-cover"
           />
@@ -28,7 +28,9 @@ export default function DashboardPage() {
           <div className="mt-2 text-2xl font-bold text-black">$7,500 mo.</div>
         </div>
       </div>
-
+      <div className="m-4">
+        <DateInput />
+      </div>
       <div className="mb-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {["Job type", "Hours worked", "Salary", "Bonus"].map((item) => (
           <div key={item} className="rounded-lg border bg-white p-6 shadow-sm">
@@ -56,6 +58,5 @@ export default function DashboardPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }
-
