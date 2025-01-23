@@ -31,7 +31,10 @@ const ProfilePreview = ({ onEdit }) => {
         "I used my expertise to do this and that and blah blah.",
     },
   };
-
+  const handleClick = () => {
+    // Navigate to the signup page
+    window.location.href = "/RegisterAsDeveloper/DeveloperProfile";
+  };
   return (
     <div className="profile-preview">
       <div className="profile-sections">
@@ -113,7 +116,7 @@ const ProfilePreview = ({ onEdit }) => {
         <button className="px-4 py-2 bg-gray-200 text-black rounded-md hover:bg-gray-300" onClick={() => onEdit('work-experience')}>
           Back
         </button>
-        <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+        <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700" onClick={handleClick}>
           Save Profile
         </button>
       </div>

@@ -1,12 +1,18 @@
-import React from "react"
+"use client";
+import React from "react";
 
-function ManualEntry({ onClick }) {
+function ManualEntry() {
+  const handleClick = () => {
+    // Navigate to the signup page
+    window.location.href = "/RegisterAsDeveloper/RegisterDeveloper";
+  };
+
   return (
     <div className="w-full flex flex-col justify-between h-full">
       <h3 className="text-lg font-medium mb-2 text-black">Continue filling the information manually.</h3>
       <div
         className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center flex-1 flex flex-col justify-center cursor-pointer hover:border-gray-400"
-        onClick={onClick}
+        onClick={handleClick}
       >
         <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -19,7 +25,7 @@ function ManualEntry({ onClick }) {
         <p className="mt-2 text-sm text-gray-600">Fill the information here</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default ManualEntry
+export default ManualEntry;

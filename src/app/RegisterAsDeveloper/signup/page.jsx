@@ -3,18 +3,21 @@
 import Image from "next/image"
 
 export default function Signup() {
+  const handlePath = () => {
+    '/Onboarding'
+  }
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center pb-4">
-      <div className="w-full max-w-md space-y-8">
+      <div className="max-w-md space-y-8">
         <div className="space-y-6">
           <div className="flex justify-center">
-            <div className="bg-blue-600 px-8 py-4 rounded-b-lg">
+            <div className="bg-blue-600 px-8 py-3 rounded-b-lg">
               <Image
                 src={"/assets/logo.png"}
                 alt="LumioAI Logo"
                 width={60}
-                height={40}
-                className="h-16 w-auto"
+                height={10}
+                className="h-10 w-auto"
               />
             </div>
           </div>
@@ -44,7 +47,7 @@ export default function Signup() {
             </div>
           </div>
 
-          <form className="space-y-4">
+          <form className="space-y-4" action={"/RegisterAsDeveloper/Onboarding"}>
             <input
               type="text"
               placeholder="Full name"
